@@ -1,0 +1,43 @@
+package helper
+
+import org.apache.pdfbox.pdmodel.PDDocument
+import org.apache.pdfbox.pdmodel.PDPage
+import org.apache.pdfbox.pdmodel.PDPageContentStream
+import org.apache.pdfbox.pdmodel.font.PDType1Font
+import java.io.File
+
+object FileFactoryHelper {
+
+    fun createTextFile(fileName: String) {
+        val file = File("$fileName.txt")
+        file.writeText(randomTextGenerator())
+    }
+
+    fun createDirectory(directoryName: String) {
+        val file = File(directoryName)
+        file.mkdir()
+    }
+
+    fun createPDFFile(fileName: String) {
+        val pdDoc = PDDocument()
+        val page = PDPage()
+        val font = PDType1Font.COURIER
+        val stream =  PDPageContentStream(pdDoc, page, PDPageContentStream.AppendMode.OVERWRITE, true, true)
+        stream.beginText()
+        stream.setFont(font, 14f)
+        stream.showText(randomTextGenerator())
+        stream.endText()
+        stream.close()
+        pdDoc.addPage(page)
+        pdDoc.save(File("$fileName.pdf"))
+    }
+
+    private fun  randomTextGenerator() : String {
+        val charPool : List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
+
+        return (1..100)
+            .map { _ -> kotlin.random.Random.nextInt(0, charPool.size) }
+            .map(charPool::get)
+            .joinToString("")
+    }
+}
