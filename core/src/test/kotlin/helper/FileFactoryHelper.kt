@@ -1,5 +1,6 @@
 package helper
 
+import org.apache.commons.io.FileUtils
 import org.apache.pdfbox.pdmodel.PDDocument
 import org.apache.pdfbox.pdmodel.PDPage
 import org.apache.pdfbox.pdmodel.PDPageContentStream
@@ -30,6 +31,7 @@ object FileFactoryHelper {
         stream.close()
         pdDoc.addPage(page)
         pdDoc.save(File("$fileName.pdf"))
+        pdDoc.close()
     }
 
     private fun  randomTextGenerator() : String {
@@ -39,5 +41,10 @@ object FileFactoryHelper {
             .map { _ -> kotlin.random.Random.nextInt(0, charPool.size) }
             .map(charPool::get)
             .joinToString("")
+    }
+
+    fun deleteFolder(folderName: String) {
+        val file = File(folderName)
+        FileUtils.deleteDirectory(file)
     }
 }

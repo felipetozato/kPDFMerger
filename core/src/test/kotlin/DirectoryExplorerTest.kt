@@ -31,8 +31,10 @@ class DirectoryExplorerTest {
         }
 
         @AfterAll
+        @JvmStatic
         fun envCleanup() {
-
+            FileFactoryHelper.deleteFolder(EMPTY_DICT)
+            FileFactoryHelper.deleteFolder(DIC_NAME)
         }
     }
 
