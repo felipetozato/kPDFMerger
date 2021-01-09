@@ -27,7 +27,7 @@ class PDFMerger(override val files: Array<String>) : FileMerger {
             pdfDoc.pages.forEach(mergeDoc::importPage)
         }
 
-        val mergedFile = File("PDFMerge-${UUID.randomUUID()}.pdf")
+        val mergedFile = File("$outputFileName.pdf")
         mergeDoc.save(mergedFile)
         mergeDoc.close()
         savedDocumentName = mergedFile.absolutePath

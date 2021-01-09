@@ -12,11 +12,11 @@ class DirectoryExplorerTest {
     private val directoryExplorer = DirectoryExplorer()
 
     companion object {
-        private const val FILE_NAME1 = "textfile"
+        private const val FILE_NAME1 = "textfile.txt"
         private const val EMPTY_DICT = "emptyDict"
         private const val DIC_NAME = "myDict"
-        private const val PDF_NAME = "pdffile"
-        private const val PDF_NAME2 = "pdffile2"
+        private const val PDF_NAME = "pdffile.pdf"
+        private const val PDF_NAME2 = "pdffile2.pdf"
 
 
         @BeforeAll

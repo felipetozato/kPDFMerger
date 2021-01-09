@@ -10,7 +10,7 @@ import java.io.File
 object FileFactoryHelper {
 
     fun createTextFile(fileName: String) {
-        val file = File("$fileName.txt")
+        val file = File(fileName)
         file.writeText(randomTextGenerator())
     }
 
@@ -30,7 +30,9 @@ object FileFactoryHelper {
         stream.endText()
         stream.close()
         pdDoc.addPage(page)
-        pdDoc.save(File("$fileName.pdf"))
+        val file = File(fileName)
+        file.setReadable(true)
+        pdDoc.save(file)
         pdDoc.close()
     }
 
@@ -46,5 +48,10 @@ object FileFactoryHelper {
     fun deleteFolder(folderName: String) {
         val file = File(folderName)
         FileUtils.deleteDirectory(file)
+    }
+
+    fun deleteFile(fileName: String) {
+        val file = File(fileName)
+        file.delete()
     }
 }
