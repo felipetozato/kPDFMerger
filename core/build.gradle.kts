@@ -19,6 +19,10 @@ dependencies {
 
     implementation("org.apache.pdfbox:pdfbox:2.0.21")
     implementation(kotlin("stdlib"))
+    // Koin for Kotlin apps
+    implementation("io.insert-koin:koin-core:3.0.1")
+    // Testing
+    testImplementation("io.insert-koin:koin-test:3.0.1")
 }
 
 tasks.test {

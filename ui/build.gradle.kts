@@ -12,6 +12,7 @@ version = "1.0"
 
 repositories {
     jcenter()
+    mavenCentral()
     maven { url = uri("https://maven.pkg.jetbrains.space/public/p/compose/dev") }
 }
 
@@ -20,6 +21,13 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.0")
     implementation(compose.desktop.currentOs)
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3")
+    // Koin for Kotlin apps
+    implementation("io.insert-koin:koin-core:3.0.1")
+    // Testing
+    testImplementation("io.insert-koin:koin-test:3.0.1")
+
+    implementation(project(":core"))
 }
 
 tasks.test {
