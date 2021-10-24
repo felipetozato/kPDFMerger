@@ -1,3 +1,4 @@
 package base
 
-interface BaseViewModel
+interface BaseViewModel {
+}

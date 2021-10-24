@@ -1,6 +1,8 @@
+import androidx.compose.ui.window.application
 
 private val appStarter = Application()
 
-fun main() {
-    appStarter.startApp()
+fun main() = application {
+    appStarter.bootstrapApp()
+    appStarter.createMainWindow(this)
 }

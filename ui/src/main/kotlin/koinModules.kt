@@ -1,4 +1,5 @@
 import actionView.ActionScreen
+import fileList.FileListScreen
 import mainView.MainInteractor
 import mainView.MainPresenter
 import mainView.MainScreen
@@ -17,4 +18,7 @@ val uiModule = module {
 
     // Actions Screen
     factory { ActionScreen() }
+
+    //File List Screen
+    factory { FileListScreen() }
 }

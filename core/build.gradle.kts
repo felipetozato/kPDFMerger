@@ -8,21 +8,16 @@ group = "me.user"
 version = "1.0"
 
 repositories {
-    mavenCentral()
 }
 
 dependencies {
-    testImplementation(kotlin("test-junit5"))
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.0")
-    testImplementation("commons-io", "commons-io", "2.5")
+    implementation(Dependencies.Apache.pdfBox)
+    implementation(Dependencies.Koin.core)
 
-    implementation("org.apache.pdfbox:pdfbox:2.0.21")
-    implementation(kotlin("stdlib"))
-    // Koin for Kotlin apps
-    implementation("io.insert-koin:koin-core:3.0.1")
-    // Testing
-    testImplementation("io.insert-koin:koin-test:3.0.1")
+    testImplementation(platform(Dependencies.Test.JUnit.bom))
+    testImplementation(Dependencies.Test.JUnit.jupter)
+    testImplementation(Dependencies.Test.CommonsIO.commonsIO)
+    testImplementation(Dependencies.Koin.test)
 }
 
 tasks.test {
@@ -30,5 +25,5 @@ tasks.test {
 }
 
 tasks.withType<KotlinCompile>() {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = "11"
 }

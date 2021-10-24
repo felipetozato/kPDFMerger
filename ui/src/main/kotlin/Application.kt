@@ -1,5 +1,8 @@
-import androidx.compose.desktop.Window
+import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.material.MaterialTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.window.ApplicationScope
+import androidx.compose.ui.window.Window
 import mainView.MainScreen
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -9,14 +12,17 @@ class Application : KoinComponent {
 
     private val mainScreen: MainScreen by inject()
 
-    fun startApp() {
-        createThemedWindow()
+    fun bootstrapApp() {
         setupKoin()
     }
 
-    private fun createThemedWindow() = Window {
-        MaterialTheme {
-            mainScreen.createScreen()
+    @Preview
+    @Composable
+    fun createMainWindow(applicationScope: ApplicationScope) {
+        Window(onCloseRequest = applicationScope::exitApplication) {
+            MaterialTheme {
+                mainScreen.createScreen()
+            }
         }
     }
 
